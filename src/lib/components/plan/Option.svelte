@@ -24,12 +24,13 @@
     .active{
         background-color: green;
     }
-
+    
     button{
         background-color: #F4F1EB;
         border: none;
         border-radius: 8px;
         text-align: left;
         padding: 1.5rem;
+        cursor: pointer;
     }
 </style>

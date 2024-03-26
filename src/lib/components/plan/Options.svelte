@@ -1,5 +1,6 @@
 <script lang="ts">
     import Options from "$lib/components/plan/Option.svelte";
+	import OrderConfirmation from "./OrderConfirmation.svelte";
 
     let selectedMeans = '';
     let selectedType = '';
@@ -32,10 +33,10 @@
 
     const handleOrder = (option: string) => {
         if(option === 'Every week'){
-            selectedPrice = '$7.20'
+            selectedPrice = '$28.80'
             orderCompleted = true
         } else if (option === 'Every 2 weeks'){
-            selectedPrice = '$9.60'
+            selectedPrice = '$19.20'
             orderCompleted = true
         } else if (option === 'Every month'){
             selectedPrice = '$12.00'
@@ -44,8 +45,8 @@
     }
 </script>
 
-<div>
-    <div>
+<div class="container">
+    <div class="options-container">
         <h2>How do you drink your coffee?</h2>
         <Options
             handleClick={handleDrinkingMeansClick}            
@@ -64,7 +65,7 @@
         />
     </div>
 
-    <div>
+    <div class="options-container">
         <h2>What type of coffee?</h2>
         <Options
             handleClick={handleTypeClick}
@@ -83,7 +84,7 @@
         />
     </div>
 
-    <div>
+    <div class="options-container">
         <h2>How much would you like?</h2>
         <Options
             handleClick={handleAmountClick}
@@ -102,7 +103,7 @@
         />
     </div>
 
-    <div>
+    <div class="options-container">
         <h2>Want us to grind them?</h2>
         <Options
             handleClick={handleGrindClick}
@@ -121,7 +122,7 @@
         />
     </div>
 
-    <div>
+    <div class="options-container">
         <h2>How often should we deliver?</h2>
         <Options
             handleClick={handleDeliveryClick}
@@ -140,40 +141,91 @@
         />
     </div>
 
-
-    <h1>"I drink my coffee as <span>{selectedMeans}</span>, with a <span>{selectedType}</span> type of bean. <span>{selectedAmount}</span> ground ala <span>{selectedGrind}</span>, sent to me <span>{selectedDelivery}</span>."</h1>
+    <div class="choice-container">
+        <p>ORDER SUMMARY</p>
+        <h2>"I drink my coffee as <span>{selectedMeans ? selectedMeans : ' _____ '}</span>, with a <span>{selectedType ? selectedType : ' _____ '}</span> type of bean. <span>{selectedAmount ? selectedAmount : ' _____ '}</span> ground ala <span>{selectedGrind ? selectedGrind : ' _____ '}</span>, sent to me <span>{selectedDelivery ? selectedDelivery : ' _____ '}</span>."</h2>
+    </div>
 
     {#if selectedMeans && selectedType && selectedAmount && selectedGrind && selectedDelivery}
         <div class="btn">
             <button on:click={() => handleOrder(selectedDelivery)}>Create my plan!</button>
-        </div>        
+        </div>
     {:else}
-        <h3>Please complete your order first</h3>
+        <h3 style="text-align: center;">Please complete your order first</h3>
     {/if}
 
     {#if orderCompleted}
-        <div>
-            <h2>Order Summary</h2>
-            <h1>"I drink my coffee as <span>{selectedMeans}</span>, with a <span>{selectedType}</span> type of bean. <span>{selectedAmount}</span> ground ala <span>{selectedGrind}</span>, sent to me <span>{selectedDelivery}</span>."</h1>
-            <p>
-                Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout. 
-            </p>
-            <div>
-                <p>{selectedPrice} / mo</p>
-                <button>Checkout</button>
-            </div>
-        </div>
+        <OrderConfirmation
+            {selectedMeans}
+            {selectedType}
+            {selectedAmount}
+            {selectedGrind}
+            {selectedDelivery}
+            {selectedPrice}
+        />
     {/if}
 </div>
 
 <style>
+    .options-container{
+        margin-top: 7.5rem;
+    }
+
+    .options-container h2{
+        color: #83888F;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+        font-weight: 800;
+    }
+
+    .choice-container{
+        color: #FEFCF7;
+        background-image: url('./assets/about/mobile/bg-quality.png');
+        height: 400px;
+        margin-top: 7.5rem;
+        border-radius: 8px;
+        margin-inline: 1.5rem;
+    }
+
+    .choice-container p{
+        line-height: 1.5rem;
+        color: #83888F;
+        padding: 2rem 2rem 0 2rem;
+    }
+
+    .choice-container h2 {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        padding: 0 1rem 2rem 2rem;
+    }
+
     span{
-        color: green;
+        color: #0E8784;
     }
 
     .btn{
         margin: 0 auto;
         display: flex;
         justify-content: center;
+        padding: 1rem 2rem;
+        border-radius: 6px;
+        border: none;
+        margin-top: 3.5rem;
+    }
+
+    .btn button {
+        padding: 1rem 2rem;
+        border-radius: 6px;
+        border: none;
+        background-color: #0E8784;
+        color: #FEFCF7;
+        font-family: "Fraunces", serif;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .btn button:hover{
+        background-color: #66D2CF;
+        cursor: pointer;
     }
 </style>
