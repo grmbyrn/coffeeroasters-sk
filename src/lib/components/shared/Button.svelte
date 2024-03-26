@@ -20,6 +20,7 @@
         text-decoration: none;
         color: #FEFCF7;
         font-family: "Fraunces", serif;
+        font-size: 18px;
     }
 
     button:hover{

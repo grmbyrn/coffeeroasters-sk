@@ -22,4 +22,15 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+
+    @media only screen and (min-width: 481px){
+        h2{
+            font-size: 7rem;
+            position: relative;
+            top: 4.5rem;
+            z-index: -1;
+            margin-top: 2.5rem;
+
+        }
+    }
 </style>

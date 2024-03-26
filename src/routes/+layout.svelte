@@ -18,4 +18,10 @@
 		margin-right: auto;
 		padding-bottom: 5rem;
 	}
+
+	@media only screen and (min-width: 481px){
+		.container{
+			width: 48rem;
+		}
+	}
 </style>

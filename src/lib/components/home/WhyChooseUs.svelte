@@ -11,7 +11,7 @@
             A large part of our role is choosing which particular coffees will be featured  in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.
         </p>
     </div>
-    <div>
+    <div class="choices">
         {#each choices as choice}   
             <Choice
                 img={choice.img}
@@ -49,5 +49,29 @@
     p{
         line-height: 1.5rem;
         padding-inline: 1.5rem;
+    }
+
+    @media only screen and (min-width: 481px){
+        .container{
+            height: 615px;
+        }
+
+        .inner-container{
+            padding-top: 3.5rem;
+            padding-inline: 4.625rem;
+        }
+    
+        h2{
+            font-size: 2rem;
+        }
+
+        p{
+            margin-top: 1.5rem;
+        }
+
+        .choices{
+            margin-top: 4.375rem;
+            margin-inline: 3.625rem;
+        }
     }
 </style>

@@ -57,7 +57,25 @@
         padding: 3.5rem 1.5rem 0 1.5rem;
     }
 
+    h1{
+        font-size: 3rem;
+    }
+
     p{
         margin-top: 1.5rem;
+    }
+
+    @media only screen and (min-width: 481px){
+        .container img {
+            width: 689px;
+            height: 500px;
+            border-radius: 10px;
+        }
+        
+        .container-text{
+            padding: 6.5rem 14.5625rem 6.5rem 3.625rem;
+            text-align: left;
+            align-items: flex-start;
+        }
     }
 </style>

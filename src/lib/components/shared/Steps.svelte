@@ -35,4 +35,22 @@
         line-height: 1.5rem;
         padding-inline: 1.5rem;
     }
+
+    @media only screen and (min-width: 481px){
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        h2{
+            margin-top: 0;
+        }
+
+        p{
+            padding-inline: 0;
+            margin-top: 2.375rem;
+        }
+    }
 </style>

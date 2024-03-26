@@ -6,8 +6,10 @@
 
 <div class="container">
     <img src={img} alt="coffee">
-    <h3>{heading}</h3>
-    <p>{para}</p>
+    <div class="text-container">
+        <h3>{heading}</h3>
+        <p>{para}</p>
+    </div>
 </div>
 
 <style>
@@ -38,5 +40,25 @@
 
     p{
         line-height: 1.5rem;
+    }
+
+    @media only screen and (min-width: 481px){
+        .container{
+            display: flex;
+            flex-direction: row;
+            padding-inline: 6.125rem;
+            gap: 2.25rem;
+        }
+
+        .text-container{
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        h3{
+            margin-top: 0rem;
+        }
     }
 </style>
