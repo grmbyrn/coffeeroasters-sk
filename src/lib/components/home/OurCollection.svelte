@@ -23,7 +23,7 @@
         -webkit-text-fill-color: transparent;
     }
 
-    @media only screen and (min-width: 481px){
+    @media only screen and (min-width: 768px){
         h2{
             font-size: 7rem;
             position: relative;

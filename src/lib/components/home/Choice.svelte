@@ -36,12 +36,12 @@
         margin-top: 1.5rem;
     }
 
-    @media only screen and (min-width: 481px){
+    @media only screen and (min-width: 768px){
         .container{
             flex-direction: row;
             padding: 2.5rem 3rem;
             gap: 3.4375rem;
-
+            margin: 4rem 1.5rem 0 1.5rem;
         }
 
         .text-container{

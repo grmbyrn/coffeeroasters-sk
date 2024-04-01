@@ -62,7 +62,7 @@
 
     .modal{
         position: fixed;
-        top: 4rem;
+        top: 5.5rem;
         left: 0;
         width: 100%;
         height: 100%;
@@ -96,4 +96,20 @@
         font-weight: 800;
         line-height: 2rem;
 	}
+
+    @media only screen and (min-width: 768px){
+        header{
+            padding: 2.5rem 2.5rem 0 2.5rem;
+        }
+
+        .logo{
+            width: 236px;
+        }
+    }
+
+    @media only screen and (min-width: 768px){
+        header{
+            padding: 2.75rem 5rem 0 5rem;
+        }
+    }
 </style>

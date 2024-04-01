@@ -33,4 +33,10 @@
         padding: 1.5rem;
         cursor: pointer;
     }
+
+    @media only screen and (min-width: 768px){
+        .options{
+            width: 223px;
+        }
+    }
 </style>

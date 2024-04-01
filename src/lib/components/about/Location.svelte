@@ -37,4 +37,11 @@
     .details-container{
         margin-top: 1.375rem;
     }
+
+    @media only screen and (min-width: 768px){
+        .container{
+            align-items: flex-start;
+            flex: 1;
+        }
+    }
 </style>

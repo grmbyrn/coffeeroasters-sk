@@ -42,7 +42,7 @@
         line-height: 1.5rem;
     }
 
-    @media only screen and (min-width: 481px){
+    @media only screen and (min-width: 768px){
         .container{
             display: flex;
             flex-direction: row;

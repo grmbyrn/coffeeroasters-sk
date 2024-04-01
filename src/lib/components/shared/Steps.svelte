@@ -36,21 +36,31 @@
         padding-inline: 1.5rem;
     }
 
-    @media only screen and (min-width: 481px){
+    @media only screen and (min-width: 768px){
         .container{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             text-align: left;
+            height: 355px;
+            margin-top: 5.125rem;
         }
 
         h2{
             margin-top: 0;
+            flex: 1;
+
+        }
+
+        h3{
+            flex: 1;
+            margin-top: 2.375rem;
         }
 
         p{
             padding-inline: 0;
-            margin-top: 2.375rem;
+            margin-top: 2.625rem;
+            flex: 1;
         }
     }
 </style>

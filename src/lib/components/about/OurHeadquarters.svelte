@@ -6,16 +6,18 @@
 
 <div class="container">
     <h2>Our headquarters</h2>
-    {#each locations as location}
-        <Location
-            img={location.img}
-            country={location.country}
-            street={location.address.street}
-            city={location.address.city}
-            postCode={location.address.postCode}
-            phoneNumber={location.phoneNumber}
-        />
-    {/each}
+    <div class="locations">
+        {#each locations as location}
+            <Location
+                img={location.img}
+                country={location.country}
+                street={location.address.street}
+                city={location.address.city}
+                postCode={location.address.postCode}
+                phoneNumber={location.phoneNumber}
+            />
+        {/each}
+    </div>
 </div>
 
 <style>
@@ -27,5 +29,17 @@
         color: #83888F;
         font-size: 1.5rem;
         line-height: 2rem;
+    }
+
+    @media only screen and (min-width: 768px){
+        h2{
+            text-align: left;
+        }
+
+        .locations{
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+        }
     }
 </style>

@@ -19,9 +19,15 @@
 		padding-bottom: 5rem;
 	}
 
-	@media only screen and (min-width: 481px){
+	@media only screen and (min-width: 768px){
 		.container{
 			width: 48rem;
+		}
+	}
+
+	@media only screen and (min-width: 1100px){
+		.container{
+			width: 90rem;
 		}
 	}
 </style>

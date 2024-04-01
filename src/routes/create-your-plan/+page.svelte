@@ -14,11 +14,31 @@
     paragraph={"Build a subscription plan that best fits your needs. We offer an assortment of the best artisan coffees from around the globe delivered fresh to your door."}
     button={false}
 />
-{#each steps as step}
-    <Steps
-        step={step.step}
-        heading={step.heading}
-        para={step.para}
-    />
-{/each}
+<div class="steps-container">
+    {#each steps as step}
+        <Steps
+            step={step.step}
+            heading={step.heading}
+            para={step.para}
+        />
+    {/each}
+</div>
 <Options />
+
+<style>
+    .steps-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    @media only screen and (min-width: 768px){
+        .steps-container{
+            flex-direction: row;
+            gap: 5.9375rem;
+            padding-inline: 2rem;
+        }
+    }
+</style>

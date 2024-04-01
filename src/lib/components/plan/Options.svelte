@@ -46,8 +46,8 @@
 </script>
 
 <div class="container">
+    <h2>How do you drink your coffee?</h2>
     <div class="options-container">
-        <h2>How do you drink your coffee?</h2>
         <Options
             handleClick={handleDrinkingMeansClick}            
             heading={'Capsule'}
@@ -65,8 +65,8 @@
         />
     </div>
 
+    <h2>What type of coffee?</h2>
     <div class="options-container">
-        <h2>What type of coffee?</h2>
         <Options
             handleClick={handleTypeClick}
             heading={'Single Origin'}
@@ -84,8 +84,8 @@
         />
     </div>
 
+    <h2>How much would you like?</h2>
     <div class="options-container">
-        <h2>How much would you like?</h2>
         <Options
             handleClick={handleAmountClick}
             heading={'250g'}
@@ -103,8 +103,8 @@
         />
     </div>
 
+    <h2>Want us to grind them?</h2>
     <div class="options-container">
-        <h2>Want us to grind them?</h2>
         <Options
             handleClick={handleGrindClick}
             heading={'Wholebean'}
@@ -122,8 +122,8 @@
         />
     </div>
 
+    <h2>How often should we deliver?</h2>
     <div class="options-container">
-        <h2>How often should we deliver?</h2>
         <Options
             handleClick={handleDeliveryClick}
             heading={'Every week'}
@@ -167,15 +167,20 @@
 </div>
 
 <style>
-    .options-container{
+    .container{
         margin-top: 7.5rem;
     }
 
-    .options-container h2{
+    .options-container{
+        margin-top: 2rem;
+    }
+
+    h2{
         color: #83888F;
         font-size: 1.5rem;
         line-height: 1.75rem;
         font-weight: 800;
+        margin-top: 7.5rem;
     }
 
     .choice-container{
@@ -227,5 +232,17 @@
     .btn button:hover{
         background-color: #66D2CF;
         cursor: pointer;
+    }
+
+    @media only screen and (min-width: 768px){
+        .container{
+            padding-inline: 2rem;
+        }
+
+        .options-container{
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
     }
 </style>
