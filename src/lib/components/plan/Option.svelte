@@ -2,11 +2,11 @@
     export let handleClick: (option: string) => void;
     export let heading: string
     export let para: string
-    export let isActive: boolean = false
+    export let activeOption: string;
 </script>
 
-<div class="options">
-    <button class:active={isActive} on:click={() => handleClick(heading)}>
+<div class="option">
+    <button class:active={activeOption === heading} on:click={() => handleClick(heading)}>
         <h3>{heading}</h3>
         <p>
             {para}
@@ -15,14 +15,10 @@
 </div>
 
 <style>
-    .options {
+    .option {
         display: flex;
         gap: 1rem;
         margin-top: 2rem;
-    }
-
-    .active{
-        background-color: green;
     }
     
     button{
@@ -33,10 +29,16 @@
         padding: 1.5rem;
         cursor: pointer;
     }
-
+    
     @media only screen and (min-width: 768px){
-        .options{
+        .option{
             width: 223px;
+        }
+    }
+    
+    @media only screen and (min-width: 1100px){
+        .option{
+            height: 250px;
         }
     }
 </style>

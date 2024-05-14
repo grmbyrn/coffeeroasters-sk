@@ -1,5 +1,7 @@
 <script lang="ts">
-    import Options from "$lib/components/plan/Option.svelte";
+    import {onMount} from 'svelte'
+    import Option from "$lib/components/plan/Option.svelte";
+	import OptionsMenu from "./OptionsMenu.svelte";
 	import OrderConfirmation from "./OrderConfirmation.svelte";
 
     let selectedMeans = '';
@@ -8,6 +10,7 @@
     let selectedGrind = '';
     let selectedDelivery = '';
     let selectedPrice = '';
+    let activeOption = '';
 
     let orderCompleted: boolean = false
 
@@ -43,102 +46,142 @@
             orderCompleted = true
         }
     }
+
+    let isLargeScreen = false
+
+    const updateScreenSize = () => {
+        isLargeScreen = window.innerWidth >= 1100
+    }
+
+    onMount(() => {
+        updateScreenSize()
+
+        window.addEventListener('resize', updateScreenSize)
+
+        return () => {
+            window.removeEventListener('resize', updateScreenSize)
+        }
+    })
+
+
 </script>
 
 <div class="container">
-    <h2>How do you drink your coffee?</h2>
-    <div class="options-container">
-        <Options
-            handleClick={handleDrinkingMeansClick}            
-            heading={'Capsule'}
-            para={'Compatible with Nespresso systems and similar brewers'}
-        />
-        <Options
-            handleClick={handleDrinkingMeansClick}
-            heading={'Filter'}
-            para={'For pour over or drip methods like Aeropress, Chemex, and V60'}
-        />
-        <Options
-            handleClick={handleDrinkingMeansClick}
-            heading={'Espresso'}
-            para={'Dense and finely ground beans for an intense, flavorful experience'}
-        />
-    </div>
-
-    <h2>What type of coffee?</h2>
-    <div class="options-container">
-        <Options
-            handleClick={handleTypeClick}
-            heading={'Single Origin'}
-            para={'Distinct, high quality coffee from a specific family-owned farm'}
-        />
-        <Options
-            handleClick={handleTypeClick}
-            heading={'Decaf'}
-            para={'Just like regular coffee, except the caffeine has been removed'}
-        />
-        <Options
-            handleClick={handleTypeClick}
-            heading={'Blended'}
-            para={'Combination of two or three dark roasted beans of organic coffees'}
-        />
-    </div>
-
-    <h2>How much would you like?</h2>
-    <div class="options-container">
-        <Options
-            handleClick={handleAmountClick}
-            heading={'250g'}
-            para={'Perfect for the solo drinker. Yields about 12 delicious cups.'}
-        />
-        <Options
-            handleClick={handleAmountClick}
-            heading={'500g'}
-            para={'Perfect option for a couple. Yields about 40 delectable cups.'}
-        />
-        <Options
-            handleClick={handleAmountClick}
-            heading={'1000g'}
-            para={'Perfect for offices and events. Yields about 90 delightful cups.'}
-        />
-    </div>
-
-    <h2>Want us to grind them?</h2>
-    <div class="options-container">
-        <Options
-            handleClick={handleGrindClick}
-            heading={'Wholebean'}
-            para={'Best choice if you cherish the full sensory experience'}
-        />
-        <Options
-            handleClick={handleGrindClick}
-            heading={'Filter'}
-            para={'For drip or pour-over coffee methods such as V60 or Aeropress'}
-        />
-        <Options
-            handleClick={handleGrindClick}
-            heading={'Cafetiére'}
-            para={'Course ground beans specially suited for french press coffee'}
-        />
-    </div>
-
-    <h2>How often should we deliver?</h2>
-    <div class="options-container">
-        <Options
-            handleClick={handleDeliveryClick}
-            heading={'Every week'}
-            para={'$7.20 per shipment. Includes free first-class shipping.'}
-        />
-        <Options
-            handleClick={handleDeliveryClick}
-            heading={'Every 2 weeks'}
-            para={'$9.60 per shipment. Includes free priority shipping.'}
-        />
-        <Options
-            handleClick={handleDeliveryClick}
-            heading={'Every month'}
-            para={'$12.00 per shipment. Includes free priority shipping.'}
-        />
+    <div class="inner-container">
+        {#if isLargeScreen}
+            <OptionsMenu />
+        {/if}
+        <div class="choices-container">
+            <h2>How do you drink your coffee?</h2>
+            <div class="options-container">
+                <Option
+                    handleClick={handleDrinkingMeansClick}            
+                    heading={'Capsule'}
+                    para={'Compatible with Nespresso systems and similar brewers'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleDrinkingMeansClick}
+                    heading={'Filter'}
+                    para={'For pour over or drip methods like Aeropress, Chemex, and V60'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleDrinkingMeansClick}
+                    heading={'Espresso'}
+                    para={'Dense and finely ground beans for an intense, flavorful experience'}
+                    activeOption={activeOption}
+                />
+            </div>
+        
+            <h2>What type of coffee?</h2>
+            <div class="options-container">
+                <Option
+                    handleClick={handleTypeClick}
+                    heading={'Single Origin'}
+                    para={'Distinct, high quality coffee from a specific family-owned farm'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleTypeClick}
+                    heading={'Decaf'}
+                    para={'Just like regular coffee, except the caffeine has been removed'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleTypeClick}
+                    heading={'Blended'}
+                    para={'Combination of two or three dark roasted beans of organic coffees'}
+                    activeOption={activeOption}
+                />
+            </div>
+        
+            <h2>How much would you like?</h2>
+            <div class="options-container">
+                <Option
+                    handleClick={handleAmountClick}
+                    heading={'250g'}
+                    para={'Perfect for the solo drinker. Yields about 12 delicious cups.'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleAmountClick}
+                    heading={'500g'}
+                    para={'Perfect option for a couple. Yields about 40 delectable cups.'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleAmountClick}
+                    heading={'1000g'}
+                    para={'Perfect for offices and events. Yields about 90 delightful cups.'}
+                    activeOption={activeOption}
+                />
+            </div>
+        
+            <h2>Want us to grind them?</h2>
+            <div class="options-container">
+                <Option
+                    handleClick={handleGrindClick}
+                    heading={'Wholebean'}
+                    para={'Best choice if you cherish the full sensory experience'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleGrindClick}
+                    heading={'Filter'}
+                    para={'For drip or pour-over coffee methods such as V60 or Aeropress'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleGrindClick}
+                    heading={'Cafetiére'}
+                    para={'Course ground beans specially suited for french press coffee'}
+                    activeOption={activeOption}
+                />
+            </div>
+        
+            <h2>How often should we deliver?</h2>
+            <div class="options-container">
+                <Option
+                    handleClick={handleDeliveryClick}
+                    heading={'Every week'}
+                    para={'$7.20 per shipment. Includes free first-class shipping.'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleDeliveryClick}
+                    heading={'Every 2 weeks'}
+                    para={'$9.60 per shipment. Includes free priority shipping.'}
+                    activeOption={activeOption}
+                />
+                <Option
+                    handleClick={handleDeliveryClick}
+                    heading={'Every month'}
+                    para={'$12.00 per shipment. Includes free priority shipping.'}
+                    activeOption={activeOption}
+                />
+            </div>
+        </div>
     </div>
 
     <div class="choice-container">
@@ -242,6 +285,13 @@
         .options-container{
             display: flex;
             gap: 10px;
+            justify-content: space-between;
+        }
+    }
+
+    @media only screen and (min-width: 1100px){
+        .inner-container{
+            display: flex;
             justify-content: space-between;
         }
     }
